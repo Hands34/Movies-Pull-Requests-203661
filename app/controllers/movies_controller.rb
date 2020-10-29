@@ -5,6 +5,10 @@ class MoviesController < ApplicationController
   # The @movies variable will be shared with:
   # app/views/movies/index.html.erb
 
+  def sorted
+    @sortedMovies = Movie.includes(:production_company).order("original_title")
+  end
+
   def show
     @movie = Movie.find(params[:id])
   end
